@@ -8,14 +8,14 @@ O formato segue o padrão [Keep a Changelog](https://keepachangelog.com/en/1.0.0
 
 ### Adicionado
 
-- Setup inicial do projeto Next.js.
-- Configuração das cores personalizadas no Tailwind CSS.
-- Fontes personalizadas adicionadas ao projeto usando `next/font/local`.
-- Estrutura de páginas inicial criada com suporte ao roteamento do Next.js.
+- Adicionado estilo padrão as tags h1, p, label, button.
 
 ### Modificado
 
-- Imagens movidas para a pasta `public` do Next.js para garantir um carregamento correto e otimizado.
+- Background da página foi alterado para branco.
+- Adicionada uma borda roxa aos inputs para destacar sua seleção.
+- modificado algumas cores dentro de tailwind.config.js.
+- adicionado conteúdo a página auth/signIn.
 
 ### Removido
 

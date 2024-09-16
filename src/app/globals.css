@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafafa;
+  --foreground: #737373;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   color: var(--foreground);
@@ -26,6 +26,18 @@ body {
   }
 }
 
+h1 {
+  @apply leading-[150%] text-[2rem] font-bold;
+}
+
+p {
+  @apply leading-[150%] text-[1rem] font-normal;
+}
+
+label {
+  @apply leading-[150%] text-[12px] font-normal;
+}
+
 input {
   @apply border-none bg-transparent focus:outline-none;
 }
@@ -37,4 +49,25 @@ input[type="text"] {
 
 input ::placeholder {
   @apply text-darkGrey;
+}
+
+button,
+.button {
+  @apply bg-white outline-1 outline-purple border-purple border rounded-lg text-purple leading-[150%] text-[16px] font-bold py-[11px] px-[87px];
+}
+
+button.primary {
+  @apply bg-purple border-purple text-white;
+}
+
+button:active {
+  @apply bg-lightPurple;
+}
+
+button:active.primary {
+  @apply bg-purpleHover;
+}
+
+button:disabled {
+  @apply cursor-not-allowed opacity-25;
 }

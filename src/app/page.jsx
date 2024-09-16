@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CopyField from "@/components/common/CopyField/CopyField";
+import CopyField from "@/components/common/fields/copyField/CopyField";
 
 export default function Home() {
   return (
