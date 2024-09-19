@@ -21,11 +21,11 @@ export default function TextField({
     >
       <Image
         src="/images/icon-link.svg"
-        alt="Copiar"
         width={24}
         height={24}
         className="cursor-pointer"
         onClick={copyToClipboard}
+        alt="Copy link icon"
       />
       <input
         type={type}

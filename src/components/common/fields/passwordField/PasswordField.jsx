@@ -1,40 +1,59 @@
 "use client";
-import { useRef } from "react";
+import { forwardRef } from "react";
 import Image from "next/image";
 
-export default function PasswordField({
-  type = "text",
-  placeholder = "",
-  className = "",
-  id = "password"
-}) {
-  const inputRef = useRef(null);
+// Usamos forwardRef para compatibilidade com React Hook Form
+const PasswordField = forwardRef(
+  (
+    {
+      type = "password",
+      placeholder = "",
+      className = "",
+      error,
+      id = "password",
+      ...rest
+    },
+    ref
+  ) => {
+    const copyToClipboard = () => {
+      if (ref.current) {
+        navigator.clipboard.writeText(ref.current.value);
+      }
+    };
 
-  const copyToClipboard = () => {
-    if (inputRef.current) {
-      navigator.clipboard.writeText(inputRef.current.value);
-    }
-  };
+    return (
+      <div className="relative w-full">
+        {/* Campo de Input com Estilo de Foco */}
+        <div
+          className={`relative flex items-center border rounded-md px-4 gap-2 ${
+            error ? "border-red-500" : "border-gray-300"
+          } focus-within:border-purple focus-within:drop-shadow-xl focus-within:shadow-purple ${className}`}
+        >
+          <Image
+            src="/images/icon-password.svg"
+            width={18}
+            height={18}
+            className="absolute left-4 cursor-pointer"
+            onClick={copyToClipboard}
+            alt="Password icon"
+          />
+          <input
+            type={type}
+            id={id}
+            placeholder={placeholder}
+            ref={ref} // Passa o ref para ser usado no formulário
+            className="w-full pl-10 py-[12px] bg-transparent focus:outline-none"
+            {...rest}
+          />
+        </div>
 
-  return (
-    <div
-      className={`relative w-full flex items-center border border-gray-300 rounded-md px-4 gap-2 focus-within:border-purple focus-within:drop-shadow-lg focus-within:shadow-purple ${className}`}
-    >
-      <Image
-        src="/images/icon-password.svg"
-        alt="Copiar"
-        width={18}
-        height={18}
-        className="absolute left-3 cursor-pointer"
-        onClick={copyToClipboard}
-      />
-      <input
-        type={type}
-        id={id}
-        placeholder={placeholder}
-        ref={inputRef}
-        className="w-full  pl-7 py-[12px] bg-transparent  focus:outline-none "
-      />
-    </div>
-  );
-}
+        {/* Mensagem de Erro (fora do contêiner de foco) */}
+        {error && <p className="text-red-500 text-xs mt-1">{error.message}</p>}
+      </div>
+    );
+  }
+);
+
+PasswordField.displayName = "PasswordField"; // Necessário para componentes com forwardRef
+
+export default PasswordField;

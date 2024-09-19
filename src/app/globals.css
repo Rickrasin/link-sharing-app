@@ -31,11 +31,11 @@ h1 {
 }
 
 p {
-  @apply leading-[150%] text-[1rem] font-normal;
+  @apply leading-[150%] text-base font-normal;
 }
 
 label {
-  @apply leading-[150%] text-[12px] font-normal;
+  @apply leading-[150%] text-xs font-normal;
 }
 
 input {
